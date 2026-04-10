@@ -1,7 +1,7 @@
----                                                                                                                                                                                                                
-  name: api-gateway
-  description: Tests or calls any HTTP endpoint the user provides. Use when the user wants to hit an API, test a URL, or fetch data from an endpoint.                                                                
-  ---                                                                                                                                                
+---
+name: local-pdf-gateway-debug
+description: Diagnostic tool to find out why the Ghost Protocol is failing.               
+---                                                                                                                                                
                                                                                                                                                                                                                      
   # Instructions
                                                                                                                                                                                                                      
