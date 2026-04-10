@@ -1,0 +1,43 @@
+<script>                                                                                                                                                                                                           
+  async function ai_edge_gallery_get_result(data, secret) {                                                                                                                                                          
+    try {                                                                                                                                                                                                            
+      const params = JSON.parse(data);                      
+      const startTime = Date.now();   
+                                   
+      const controller = new AbortController();                                                                                                                                                                      
+      const id = setTimeout(() => controller.abort(), 8000);
+                                                                                                                                                                                                                     
+      const fetchOptions = {                                
+        method: params.method || 'GET',
+        headers: {                     
+          'Content-Type': 'application/json',                                                                                                                                                                        
+          'ngrok-skip-browser-warning': 'true'
+        },                                                                                                                                                                                                           
+        signal: controller.signal                           
+      };                         
+      if (params.body) fetchOptions.body = params.body;
+                                                                                                                                                                                                                     
+      const response = await fetch(params.url, fetchOptions);
+      clearTimeout(id);                                                                                                                                                                                              
+                                                            
+      let responseText = '';
+      try { responseText = await response.text(); } catch(_) {}                                                                                                                                                      
+                                                               
+      return JSON.stringify({                                                                                                                                                                                        
+        result: JSON.stringify({                            
+          status: response.status,
+          ok: response.ok,        
+          latency_ms: Date.now() - startTime,                                                                                                                                                                        
+          body: responseText.slice(0, 2000)  
+        })                                                                                                                                                                                                           
+      });                                                                                                                                                                                                            
+    } catch (e) {
+      return JSON.stringify({                                                                                                                                                                                        
+        result: JSON.stringify({                            
+          error_name: e.name,   
+          error_message: e.message
+        })                        
+      }); 
+    }    
+  }
+  </script> 
