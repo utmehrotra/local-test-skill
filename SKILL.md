@@ -1,8 +1,7 @@
-name: local-pdf-gateway
-description: >-
-  Extracts and analyzes text from PDF files stored on the user's local machine 
-  via a private gateway. Use this for sensitive documents like financial 
-  statements, tax returns, or H1B legal paperwork.                                                                                                    
+---                                                                                                                                                                                                                
+  name: local-pdf-gateway
+  description: Extracts and analyzes text from PDF files stored on the user's local machine via a private gateway. Use this for sensitive documents like financial statements, tax returns, or H1B legal paperwork.                                                               
+--- 
 
 # Instructions
 
